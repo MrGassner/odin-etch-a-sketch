@@ -1,0 +1,49 @@
+/* page resets */
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit
+}
+
+body {
+    font-family: 'Anton', sans-serif;
+}
+
+
+/* page body  */
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.gameContainer {
+    background-color: red;
+    border-radius: 10px;
+    padding: 30px;
+
+}
+
+#game {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+
+}
+
+#game div {
+    border: 1px solid rgb(165, 165, 165);
+    width: 12px;
+    height: 12px;
+}
+
+.drawn {
+    background-color: black;
+}
+
