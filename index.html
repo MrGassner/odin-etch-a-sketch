@@ -10,15 +10,25 @@
     <link rel="stylesheet" href="style.css">
     <script type='text/javascript' src="index.js" defer></script>
     <title>Odin's Project</title>
+
 </head>
 <body>
     <h1>Etch-A-Sketch</h1>
 
     <div class="container">
-        <div class="gameContainer">
-            <div id="game">
+        <div class="menu">
+            <div class="colorPicker">
+                <h3>Choose a color</h3>
+                <input type="color" name="" id="colorPicker">
+            </div>
+            <div class="sizeBtns">
+                <h3>Board Size</h3>
+                <button class="16">16 x 16</button>
+                <button class="32">32 x 32</button>
+                <button class="64">64 x 64</button>
             </div>
         </div>
+        <div id="game"></div>
     </div>
 </body>
 </html>

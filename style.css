@@ -23,27 +23,36 @@ h1 {
     justify-content: space-evenly;
 }
 
-.gameContainer {
-    background-color: red;
-    border-radius: 10px;
-    padding: 30px;
-
-}
-
 #game {
+    box-sizing: content-box;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    width: 512px;
+    height: 512px;
+    padding: 2px;
 }
 
 #game div {
-    border: 1px solid rgb(165, 165, 165);
-    width: 12px;
-    height: 12px;
+    border: 0.2px solid rgba(0, 0, 0, 0.2);
 }
 
-.drawn {
-    background-color: black;
+
+/* color picker */
+.colorPicker [type='color'] {
+    -webkit-appearance: none;
+	border: none;
+	width: 200px;
+	height: 200px;
+    border-radius: 100vh;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+    border-radius: 100vh;
 }
 
