@@ -16,7 +16,7 @@ function board(size) {
         game.appendChild(gameGrid);
     }
 
-    return draw()
+    return draw('default')
 }
 
 function boardResize(event) {
@@ -31,21 +31,63 @@ function boardResize(event) {
 
 // Drawing on board
 function draw() {
-    let mouseDown = false
-    document.body.onmousedown = () => (mouseDown = true)
-    document.body.onmouseup = () => (mouseDown = false)
 
+    let colorChoice = 'Default'
+    let mouseOn = false
+    
+    document.querySelectorAll('.clrBtn').forEach(btn => {
+        btn.addEventListener('click', event => {
+             colorChoice = event.target.textContent
+        });
+    });  
+
+    document.querySelector('#game').addEventListener('click', () => {
+        mouseOn === false ? mouseOn = true : mouseOn = false;
+    });
 
     document.querySelectorAll('#gameGrid').forEach(square => {
         square.addEventListener('mouseover', event => {
-            
-            let color = document.getElementById('colorPicker').value;
 
-            if (event.type === 'mouseover' && !mouseDown) return;
-            square.classList.add('drawn');
-            square.style.background = color;    
+            if (event.type === 'mouseover' && !mouseOn) return;
+
+            if (colorChoice === 'Default') {
+                let colorDraw = document.getElementById('colorPicker').value;            
+                square.classList.add('drawn');
+                square.style.background = colorDraw;
+                square.style.filter = 'brightness(100%)'
+            }  
+
+            if (colorChoice === 'Rainbow') {
+                let maxVal = 0xFFFFFF; // 16777215
+                let randomNumber = Math.random() * maxVal; 
+                randomNumber = Math.floor(randomNumber);
+                randomNumber = randomNumber.toString(16);
+                let randColor = randomNumber.padStart(6, 0);   
+                let colorDraw = `#${randColor.toUpperCase()}`
+                
+                square.classList.add('drawn');
+                square.style.background = colorDraw;
+                square.style.filter = 'brightness(100%)'
+            }
+
+            if (colorChoice === 'Color Scale') {
+
+                if (square.classList.value !== 'drawn') {
+                    square.classList.add('drawn');
+                    square.style.background = 'white';
+                }
+
+                let defBrightness = square.style.filter.split(/[()]/)
+
+                if (defBrightness.length === 1) {
+                    square.style.filter = 'brightness(100%)'
+
+                } else{
+                   square.style.filter = `brightness(${parseInt(parseInt(defBrightness[1]) * 0.95)}%)`
+                } 
+            }
         });
     });
 }
 
-board(defaultSize)
+board(defaultSize);
