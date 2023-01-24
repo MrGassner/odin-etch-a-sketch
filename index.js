@@ -3,8 +3,17 @@ const game = document.getElementById('game');
 let boardSize = document.querySelectorAll('.sizeBtns')
 let defaultSize = 16
 
-document.querySelectorAll('.sizeBtns').forEach(btn => {
+document.querySelectorAll('.sizeBtn').forEach(btn => {
     btn.addEventListener('click', event => boardResize(event))
+})
+
+document.querySelector('#sizeRange').addEventListener('change', event => {
+    const sliderBtn = document.querySelector('.sliderBtn');
+    let sliderVal = event.target.value;
+    
+    sliderBtn.textContent = `${sliderVal} x ${sliderVal}`;
+    sliderBtn.id = `${sliderVal}`;
+    sliderBtn.click()
 })
 
 function board(size) {
@@ -24,7 +33,7 @@ function boardResize(event) {
         game.removeChild(game.lastChild)
     }
 
-    let newSize = event.target.classList.value;
+    let newSize = event.target.id;
     return board(newSize)
 }
 
@@ -34,7 +43,7 @@ function draw() {
 
     let colorChoice = 'Default'
     let mouseOn = false
-    
+
     document.querySelectorAll('.clrBtn').forEach(btn => {
         btn.addEventListener('click', event => {
              colorChoice = event.target.textContent
@@ -70,7 +79,7 @@ function draw() {
                 square.style.filter = 'brightness(100%)'
             }
 
-            if (colorChoice === 'Color Scale') {
+            if (colorChoice === 'Dark Scale') {
 
                 if (square.classList.value !== 'drawn') {
                     square.classList.add('drawn');

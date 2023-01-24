@@ -9,6 +9,7 @@ html {
 
 body {
     font-family: 'Anton', sans-serif;
+    background-color: rgb(167, 8, 8);
 }
 
 
@@ -19,11 +20,19 @@ h1 {
     font-size: 2.5rem;
     padding: 0;
     margin: 8px 0;
+    color: #d3a665;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #d3a665;
 }
 
 .container {
     display: flex;
     justify-content: space-evenly;
+    gap: 10px;
 }
 
 #game {
@@ -32,15 +41,44 @@ h1 {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     border: 2px solid rgba(0, 0, 0, 0.6);
-    width: 512px;
-    height: 512px;
     padding: 2px;
+    width: 900px;
 }
 
 #game div {
     border: 0.2px solid rgba(0, 0, 0, 0.2);
+    font-size: 1vw;
 }
 
+/* menu */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 60%;
+}
+
+.clrBtn {
+    font-size: 1rem;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+}
+
+.Btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    margin: 5px;
+    max-width: 250px;
+    margin-bottom: 10px;
+}
 
 /* color picker */
 .colorPicker [type='color'] {
@@ -59,3 +97,59 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 100vh;
 }
 
+/* size slider */
+
+.sliderContainer{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.slider {
+
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3a665; /* Grey background */
+    outline: none; /* Remove outline */
+
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    border-radius: 100vh;
+}
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px; 
+    background: #CCCCCC; 
+    cursor: pointer; 
+    border: black 1px solid;
+    border-radius: 100vh;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #000000; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+
+/* media queries */
+@media (max-width: 840px) {
+    .container {
+        flex-direction: column;
+    }
+
+    #game {
+        height: 80vw;
+        width: auto;
+    }
+
+    .menu {
+        width: auto;
+    }
+}
